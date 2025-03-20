@@ -1,5 +1,4 @@
 name = "krc-20-explorer"
-main = ".worker-next/index.mjs"
 compatibility_date = "2025-03-20"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
