@@ -1,19 +1,5 @@
-# Top-level configuration
 name = "krc-20-explorer"
 main = ".worker-next/index.mjs"
 compatibility_date = "2025-03-20"
-
-workers_dev = false
-route = { pattern = "example.org/*", zone_name = "example.org" }
-
-kv_namespaces = [
-  { binding = "<MY_NAMESPACE>", id = "<KV_ID>" }
-]
-
-[env.staging]
-name = "my-worker-staging"
-route = { pattern = "staging.example.org/*", zone_name = "example.org" }
-
-kv_namespaces = [
-  { binding = "<MY_NAMESPACE>", id = "<STAGING_KV_ID>" }
-]
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
