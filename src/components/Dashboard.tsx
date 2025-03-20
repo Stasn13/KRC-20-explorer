@@ -10,12 +10,6 @@ const Dashboard = () => {
     const { data, isLoading, isError } = useToken(value);
     const { data: dataTransactions, isLoading: loadingTransactions } = useTransactionsData(value);
 
-    // TODO: backlog
-    /* 
-     * 1. add banners for user interactions
-     * 2. user profile
-    */
-
     return (
         <Suspense>
             <main>

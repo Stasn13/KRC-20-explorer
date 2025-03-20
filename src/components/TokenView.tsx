@@ -35,7 +35,7 @@ const TokenView = ({
     }, [commonData.max, commonData.dec]);
     return (
         <div className="mt-6 flex flex-col gap-4">
-            <div className="flex items-center">
+            <div className={cn(loadingCommon && "animate-pulse blur-md", "flex items-center")}>
                 <Card className="inline-block mr-4 text-2xl font-bold inline-black bg-foreground-light">
                     {commonData.tick}
                 </Card>
@@ -46,7 +46,7 @@ const TokenView = ({
             </div>
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 
-                <Card>
+                <Card className={cn(loadingCommon && "animate-pulse blur-md")}>
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                         <CardTitle className="text-sm font-medium">
                             Total supply
