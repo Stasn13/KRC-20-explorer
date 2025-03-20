@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { LockOpen, UsersRound } from "lucide-react"
 import { Token } from "@/hooks/useTokens"
 import { useEffect, useMemo, useState } from "react"
-import { cn, currentDate, formatNumber, shortenAddress } from "@/lib/utils"
+import { cn, currentDate, formatNumber, shortenHash, shortenAddress } from "@/lib/utils"
 import { TransactionsData } from "@/hooks/useTransactionsData"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 import { logoUrl } from "@/lib/constants"
@@ -65,7 +65,7 @@ const TokenView = ({
                         </svg>
                     </CardHeader>
                     <CardContent>
-                        <div className="text-2xl font-bold">${formatNumber(totalSupply || 0)} {commonData.tick}</div>
+                        <div className="text-2xl font-bold">{formatNumber(totalSupply || 0)} {commonData.tick}</div>
                         <p className="text-xs text-muted-foreground">
                             captured for {timestamp}
                         </p>
@@ -98,15 +98,21 @@ const TokenView = ({
                 {(transactionsData || Array(50).fill(skeletonTransaction)).map((trx, index) => (
                     <div className="flex items-center mb-2" key={transactionsData ? trx.hashRev : index}>
                         <div className="ml-4 space-y-1 mr-2">
+                            <p className="text-sm font-bold capitalize">
+                                {trx.op}
+                            </p>
                             <p className="text-sm font-medium leading-none">{shortenAddress(trx.from)} to {shortenAddress(trx.to)}</p>
-                            <p className="text-sm text-muted-foreground">
+                            <p className="text-sm text-muted-foreground inline-block lg:hidden">
+                                {shortenHash(trx.hashRev)}
+                            </p>
+                            <p className="text-sm text-muted-foreground hidden lg:inline-block">
                                 {trx.hashRev}
                             </p>
                         </div>
                         <div
                             className={cn(loadingTransactions && "animate-pulse blur-md", "ml-auto font-bold")}
                         >
-                            {trx.amt}
+                            {(trx.amt / (10 ** Number(commonData.dec))).toFixed(2)}
                         </div>
                     </div>
                 ))}

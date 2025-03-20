@@ -23,3 +23,5 @@ export function formatNumber(value: string | number) {
 }
 
 export const shortenAddress = (addr: string) => addr?.split(":")[1].slice(0, 6);
+
+export const shortenHash = (hash: string) => `${hash.slice(0, 4)}-${hash.slice(-4)}`;
