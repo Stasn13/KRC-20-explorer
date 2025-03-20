@@ -3,16 +3,17 @@ import { Card } from "./ui/card"
 import { LayoutDashboard, Search } from "lucide-react"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "./ui/tooltip"
 import { Switch } from "./ui/switch"
-import { use, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 
 const Navigation = () => {
-    const [darkMode, setDarkMode] = useState(localStorage.darkTheme === "1" || false)
+    const [darkMode, setDarkMode] = useState(false)
 
     useEffect(() => { 
         // to solve hydration issue and keep component ssr, might be solved with cache later
         if (localStorage.darkTheme === "1") {
             document.documentElement.classList.add("dark");
+            setDarkMode(true);
         }
     }, []);
 

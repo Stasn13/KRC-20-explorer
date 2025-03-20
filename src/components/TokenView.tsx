@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
 import { LockOpen, UsersRound } from "lucide-react"
 import { Token } from "@/hooks/useTokens"
-import { useEffect, useMemo, useState } from "react"
+import { useMemo } from "react"
 import { cn, currentDate, formatNumber, shortenHash, shortenAddress } from "@/lib/utils"
 import { TransactionsData } from "@/hooks/useTransactionsData"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
